@@ -1,0 +1,29 @@
+{
+  "departments": [
+    {
+      "id": "59cf8028bb675df3237559eb",
+      "name": "SATIANCE"
+    },
+    {
+      "id": "59cf80280f12fe199851071e",
+      "name": "ZILLACTIC"
+    }
+  ],
+  "employees": [
+    {
+      "id": "59cf8028c826ddaec75a2a60",
+      "name": "Liza Wolf",
+      "departmentId": "59cf8028bb675df3237559eb"
+    },
+    {
+      "id": "59cf80282c9f6ee570ae42b0",
+      "name": "Morales Johnon",
+      "departmentId": "59cf8028bb675df3237559eb"
+    },
+    {
+      "id": "59cf8028768bbec2c85c73df",
+      "name": "Cooper Pennington",
+      "departmentId": "59cf80280f12fe199851071e"
+    }
+  ]
+}
