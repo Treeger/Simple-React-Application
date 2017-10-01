@@ -18,7 +18,7 @@ export default class Department extends Component {
     })
   }
 
-  onClickDepartment (e) {
+  onClickDepartment = (e) => {
     e.preventDefault()
     if (!this.state.employees) {
       this.fetchEmployees()
@@ -41,7 +41,7 @@ export default class Department extends Component {
       <li
         className='list-group-item'
         key={department.id}>
-        <a href='#' onClick={this.onClickDepartment.bind(this)}>
+        <a href='#' onClick={this.onClickDepartment}>
           {department.name}
         </a>
         <ul>{this.renderEmployees()}</ul>

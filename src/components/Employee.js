@@ -33,11 +33,11 @@ export default class Employee extends Component {
     })
   }
 
-  changeNameValue (e) {
+  changeNameValue = (e) => {
     this.setState({nameValue: e.target.value})
   }
 
-  submitNameValue (e) {
+  submitNameValue = (e) => {
     e.preventDefault()
     axios.patch(this.state.url, {
       name: this.state.nameValue
@@ -48,12 +48,12 @@ export default class Employee extends Component {
     if (this.props.match.path === '/') return <div>Please select Department</div>
     if (this.state.loading) return ''
     return (
-      <form onSubmit={this.submitNameValue.bind(this)}>
+      <form onSubmit={this.submitNameValue}>
         <input
           className='form-control'
           type='text'
           value={this.state.nameValue}
-          onChange={this.changeNameValue.bind(this)} />
+          onChange={this.changeNameValue} />
       </form>
     )
   }

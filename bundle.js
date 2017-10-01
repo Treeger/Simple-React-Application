@@ -26501,6 +26501,17 @@ var Employee = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Employee.__proto__ || Object.getPrototypeOf(Employee)).call(this, props));
 
+    _this.changeNameValue = function (e) {
+      _this.setState({ nameValue: e.target.value });
+    };
+
+    _this.submitNameValue = function (e) {
+      e.preventDefault();
+      _axios2.default.patch(_this.state.url, {
+        name: _this.state.nameValue
+      });
+    };
+
     _this.state = {
       employee: null,
       loading: true,
@@ -26537,19 +26548,6 @@ var Employee = function (_Component) {
       });
     }
   }, {
-    key: 'changeNameValue',
-    value: function changeNameValue(e) {
-      this.setState({ nameValue: e.target.value });
-    }
-  }, {
-    key: 'submitNameValue',
-    value: function submitNameValue(e) {
-      e.preventDefault();
-      _axios2.default.patch(this.state.url, {
-        name: this.state.nameValue
-      });
-    }
-  }, {
     key: 'render',
     value: function render() {
       if (this.props.match.path === '/') return _react2.default.createElement(
@@ -26560,12 +26558,12 @@ var Employee = function (_Component) {
       if (this.state.loading) return '';
       return _react2.default.createElement(
         'form',
-        { onSubmit: this.submitNameValue.bind(this) },
+        { onSubmit: this.submitNameValue },
         _react2.default.createElement('input', {
           className: 'form-control',
           type: 'text',
           value: this.state.nameValue,
-          onChange: this.changeNameValue.bind(this) })
+          onChange: this.changeNameValue })
       );
     }
   }]);
@@ -27574,6 +27572,15 @@ var Department = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Department.__proto__ || Object.getPrototypeOf(Department)).call(this, props));
 
+    _this.onClickDepartment = function (e) {
+      e.preventDefault();
+      if (!_this.state.employees) {
+        _this.fetchEmployees();
+      } else {
+        _this.setState({ employees: null });
+      }
+    };
+
     _this.state = {
       employees: null
     };
@@ -27590,16 +27597,6 @@ var Department = function (_Component) {
           employees: response.data
         });
       });
-    }
-  }, {
-    key: 'onClickDepartment',
-    value: function onClickDepartment(e) {
-      e.preventDefault();
-      if (!this.state.employees) {
-        this.fetchEmployees();
-      } else {
-        this.setState({ employees: null });
-      }
     }
   }, {
     key: 'renderEmployees',
@@ -27630,7 +27627,7 @@ var Department = function (_Component) {
           key: department.id },
         _react2.default.createElement(
           'a',
-          { href: '#', onClick: this.onClickDepartment.bind(this) },
+          { href: '#', onClick: this.onClickDepartment },
           department.name
         ),
         _react2.default.createElement(
